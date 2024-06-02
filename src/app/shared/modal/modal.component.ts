@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-modal',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class ModalComponent {
 
+  @Input() modelID: string = '';
+  
+  constructor(public _modalService: ModalService) {}
+  
+  public closeModal($event: MouseEvent) {
+    this._modalService.toggleModal(this.modelID);
+  }
 }
